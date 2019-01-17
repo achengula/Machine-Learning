@@ -1,0 +1,12 @@
+!qiime tools import \
+--input-path /gg_13_5_otus/rep_set/99_otus.fasta \
+--output-path gg_13_5_otu_99.qza \
+--type 'FeatureData[Sequence]'
+    
+!qiime vsearch cluster-features-closed-reference \
+--i-sequences rep-seqs-deblur.qza \
+--i-table table_deblur.qza \
+--i-reference-sequences gg_13_5_otu_99.qza \
+--p-perc-identity 1 \
+--p-threads 0 \
+--output-dir closedRef_forPICRUSt
